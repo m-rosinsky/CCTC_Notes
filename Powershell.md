@@ -2,7 +2,8 @@
 
 Link: https://os.cybbh.io/public/os/latest/index.html
 
-Admin Station IP Address:  
-Stack Number:
+CTFd Address:       10.50.21.56:8000
+Username:           MIRO-006-B
 
-CTFd - 10.50.21.56:8000
+Admin Station IP:   10.50.33.169
+Stack Number:       9
