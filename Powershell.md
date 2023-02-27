@@ -25,7 +25,7 @@ Get-Variable
 
 #### Command Piping
 ```powershell
-# Get processes with id equal to 6968
+# Get processes with id equal to 6968.
 Get-Process | Select-Object name,id | Where-Object {$_.Id -eq 6968}
 ```
 
@@ -45,6 +45,36 @@ Get-Help [command]
 
 Get-Help Get-Process -Examples
 
-# Open docs webpage (NEED GUI)
+# Open docs webpage (NEED GUI).
 Get-Help Get-Process -online
+```
+
+## History
+```powershell
+Get-History
+
+# Run historical command line number.
+Invoke-History [linenum]
+```
+
+## Aliases
+Get aliases:
+```powershell
+# Get alias of man command.
+Get-Alias man
+
+# Get list of aliases for a cmdlet.
+Get-Alias -Definition Get-ChildItem
+```
+
+## Properties and Methods
+```powershell
+# Get properties and methods for the Get-Process command.
+Get-Process | Get-Member
+
+# Use a command's property.
+(Get-Process).name
+
+# Kill process with method.
+(Get-Process notepad).kill()
 ```
