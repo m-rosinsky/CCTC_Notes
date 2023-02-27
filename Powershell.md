@@ -15,3 +15,14 @@ Stack Number:       `9`
 Set-Content [filename] [content]
 Get-Content [filename]
 ```
+
+## PowerShell Variables
+```powershell
+Get-Variable
+```
+
+## Command Piping
+```powershell
+# Get processes with id equal to 6968
+Get-Process | Select-Object name,id | Where-Object {$_.Id -eq 6968}
+```
