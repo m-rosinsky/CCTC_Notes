@@ -1,0 +1,383 @@
+= Powershell Student Guide
+Kyle Jefferson
+:toc: auto
+
+== Powershell Basics
+
+=== Getting Help
+.Getting Help
+[options="header"]
+|=====================================
+^|Command      |Description
+^|Get-help     |Displays help
+^|man          |Same as get-Help
+^|cmd /c help  |Display cmd commands
+|=====================================
+
+==== Cmdlet Syntax
+
+.Cmdlet Syntax
+|=====================================
+^.^|-   |Indicates a parameter
+^.^|<>  |Indicates Arguments
+^.^|[]  |Argument accepts multiple values
+|=====================================
+
+=== Aliases
+
+.Aliases
+[options="header"]
+|==============================
+^|Command     |Description
+^|Get-Alias   |display full list of aliases
+^|set-alias   |Creates new alias
+^|del alias:  |Deletes the alias
+|==============================
+
+=== Variables
+
+.Variables
+[options="header"]
+|==============================
+^|Command  ^|result
+^|$var1 = <value>   |$var1 = 10
+^|$var2 = <value>   |$var2 = 20
+^|$var3 = $var1 + $var2|$var3 = 30
+^|Get-Variable|Lists automatic Variables
+^|dir variable: |Same as Get-Variable
+^.^|dir env:|Lists environmental variables
+|==============================
+
+=== Data Types
+
+.Data Types
+[options="header"]
+|==============================
+^|Data Type |Description
+^.^|[string] |Fixed-length string of unicode characters
+^.^|[char]|16-bit unicode character
+^.^|[byte]|8-bit unsigned character
+^.^|[int]|32-bit signed integer
+^.^|[long]|64-bit signed integer
+^.^|[single]|32-bit floating point number
+^.^|[double]|64-bit floating point number
+^.^|[datetime]|Date and Time
+^.^|[array]|array of values
+|==============================
+
+==== Getting Data Types
+
+.Getting Data Types
+[options="header"]
+|===============================
+^|Command ^|Result
+^|("Hello").gettype().name ^|String
+^|(77.564).gettype().name ^|Double
+^|(0xFF).gettype().name ^|Int32
+|===============================
+
+==== Casting
+
+.Casting
+[options="header"]
+|===============================
+^|Command ^|Result
+^|[int](5.5) ^|6
+^|[float](5.5) ^|5.5
+^|[int](0xFF) ^|255
+|===============================
+.Note
+[NOTE]
+=============================
+0xFF is hexadecimal for 255
+=============================
+
+=== Arrays
+
+.Arrays
+----
+$myarray = 'Hello', 12, (Get-Date), $true, 77.65
+$myarry.count     5
+$myarray[0]    Hello
+$myarray[-1]    77.65
+$myarray += 'new element'
+----
+
+==== Multidimensional Arrays
+
+.Multidimensional Arrays
+----
+$multiarray = @((1,2,3,4),(5,6,7,8))
+$multiarray[0][1]    2
+$multiarray[1][3]    8
+$nonjaggedarray = New-Object "int32[,]" 2,4
+$nonjaggedarray[0,1] = 2
+$nonjaggedarray[1,3] = 8
+$nonjaggedarray[0,1]    2
+$nonjaggedarray[1,3]    8
+$multiarray = @(); $multiarray += , @(1,2,3)
+----
+
+=== The Pipeline
+
+.Pipelining
+[options="header"]
+|===============================
+^|Cmdlet|Description
+^.^|Compare-Object|Compares two objects and marks their differences
+^|ConvertTo-Html|Converts object into HTML
+^|Export-Csv|Saves object in a csv file
+^.^|ForEach-Object|Returns each pipeline object one after the other
+^|Format-List|Outputs results as a list
+^|Format-Table|Outputs result as a table
+^|Format-Wide|Outputs results in several columns
+^|Get-Unique|Removes duplicates from a list of values
+^|Group-Object|Groups results according to a criterion
+^.^|Measure-Object|Calculates the statistical frequency distribution of object values or texts
+^|Out-File|Writes results to a file
+^|Out-Host|Outputs results in the console
+^|Out-Null|Deletes results
+^|Out-String|Converts results to plain text
+^.^|Select-String|Filters properties of an object and limits number of results as requested
+^|Sort-Object|Sorts results
+^.^|Tee-Object|Copies the pipeline's contents and saves it to a file or a variable
+^|Where-Object|Filters results according to a criterion
+|===============================
+
+==== Pipeline Examples
+
+.Pipelining Examples
+----
+gci *.txt | ?{$_.length -lt 100} | ft name
+ps | ft PSResources
+ps | gm -Membertype PropertySet
+gs | Group Status
+gci | Sort Length, Name -descending
+gs | ?{$_.status -eq "Running"}
+gci | Sort Length -descending | Select -first 5
+ps | Sort StartTime | Select -first 5 | ft ProcessName, StartTime
+1,2,3,1,2,3,1,2,3,1,2,3 | Sort | Get-Unique
+gci | Measure-Object Length
+gcm -Type Cmdlet | %{$_.Parameters} | %{$_.Keys} | group -NoElement | Sort Count, Name -Descending | Select -Skip 11 | ?{$_.Count -gt 1} | Out-Gridview
+----
+
+=== Comparison Operators
+
+.Comparison Operators
+[options="header"]
+|=============================
+^|Operator ^|Description
+^.^|-eq ^.^|Equals
+^.^|-ne ^.^|Not Equal
+^.^|-gt ^.^|Greater Than
+^.^|-lt ^.^|Less Than
+^.^|-ge ^.^|Greater Than or Equal To
+^.^|-le ^.^|Less Than or Equal To
+^.^|-contains ^.^|Contains (used for a collection of items)
+^.^|-match ^.^|Matches anywhere in the string
+^.^|-like ^.^|Both sides of expression are identical
+^.^|-in ^|Returns true when value is contained within a collection
+^.^|-replace ^|Replaces a string pattern
+^.^|-is ^|Returns true if both objects are the same type
+|=============================
+
+=== Loops
+
+==== While Loop
+
+.While Loop
+[source,powershell]
+$x = 0
+while($x -lt 10) {
+  Write-Host $x
+  $x++
+}
+
+==== Do While
+
+.Do While Loop
+[source,powershell]
+$x = 0
+Do {
+  Write-Host $x
+  $x++
+}while($x -lt 10)
+
+==== Do Until Loop
+
+.Do Until
+[source,powershell]
+$x = 0
+Do {
+  Write-Host $x
+  $x++
+}until($x -gt 10)
+
+==== ForEach Loop
+
+.ForEach
+[source,powershell]
+$teams = "Lions", "Tigers", "Red Wings", "Pistons"
+ForEach($team in $teams){
+  $team.insert(0, "Detroit ")
+}
+
+==== ForEach-Object
+
+.ForEach-Object
+[source,powershell]
+gci | % -process {$_.Length / 1024}
+
+=== Conditional Statements
+
+==== If/Else
+
+.If/Else
+[source,powershell]
+$x = 6
+if ($x -le 5) {
+  Write-Host "Less than 5"
+} else {
+  Write-Host "Greater than 5"
+}
+
+.If/Elseif/Else
+[source,powershell]
+$x = 5
+if ($x -lt 5) {
+  Write-host "Less than 5"
+} elseif ($x -eq 5) {
+  Write-Host "It is 5"
+} else {
+  Write-Host "Greater then 5"
+}
+
+==== Switch
+
+.Switch
+[source,powershell]
+$time = 12
+Switch($time) {
+  6 {"Morning"; break}
+  12 {"Noon"; break}
+  18 {"Evening"; break}
+  22 {"Night"; break}
+}
+
+=== Flow Control
+
+==== Break
+
+.Break
+[source,powershell]
+$x = 0
+while($x -lt 10) {
+  $x += 1
+  if($x -eq 5) {break}
+  Write-Output $x
+}
+
+==== Continue
+
+.Continue
+[source,powershell]
+$x = 0
+while($x -lt 10) {
+  $x += 1
+  if ($x -eq 5) {continue}
+  Write-Output $x
+}
+
+=== Functions
+
+.Basic Function
+[source,powershell]
+function get-sum($num1, $num2) {
+  $num1 + $num2
+}
+get-sum 5 5
+
+.Function with Optional Parameters
+[source,powershell]
+function get-test {
+  param($parm1='some value', $parm2='some value')
+  "The value $parm1 and $param2 are parameters"
+}
+
+.Function with Mandatory Parameters
+[source,powershell]
+function get-test {
+  param (
+    [Parameter(Mandatory=$true)]
+    $name
+    )
+    "Hello, $name"
+}
+
+.Function with Help Message
+[source,powershell]
+function get-test {
+  param(
+    [Parameter(Mandatory=$true, HelpMessage='Enter your name')]
+    $name
+    )
+    "Hello, $name"
+}
+
+.Function with Strongly-Typeed Mandatory Parameters
+[source,powershell]
+function get-conversion {
+  param(
+    [Parameter(Mandatory=$true, HelpMessage='Enter weight')]
+    [Double]
+    $pounds
+    )
+    $kilos = $pounds * (1/2.2)
+    $kilos
+}
+
+.Function with Switch Parameter
+[source, powershell]
+function get-switch {
+  param(
+    [Switch]
+    $special
+    )
+    if ($special) {
+      'This is the switch'
+    } else {
+      'This is not the switch'
+    }
+}
+
+.Advanced Function
+[source,powershell]
+function Get-compinfo {
+  [CmdletBinding()]
+  BEGIN {
+    $name = $env:COMPUTERNAME
+  }
+  PROCESS {
+    Write-Verbose -Message "$name"
+    $system = gwmi -class Win32_ComputerSystem -ComputerName $name
+    $os = gwmi -class Win32_OperatingSystem -ComputerName $name
+    $bios = gwmi -class win32_BIOS -ComputerName $name
+    $properties = @{
+      ComputerName = $name
+      Model = $system.model
+      OS = $os.caption
+      SerialNumber = $bios.SerialNumber
+    }
+  }
+  END {
+    New-Object -TypeName PSobject -Property $properties
+  }
+}
+
+.Filter
+[source,powershell]
+filter namedthis {
+  if )$_.name -match "file.txt") {$_}
+}
+gci | gc | ?{$_ | namedthis}
+
