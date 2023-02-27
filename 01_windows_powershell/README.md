@@ -330,5 +330,127 @@ Flag is the full command
 
 Answer:
 ```
+Get-WmiObject Win32_Processor
+```
 
+## 25. Windows_PowerShell_Logic1 (5)
+
+Prompt:
+```
+What PowerShell command will read a text file?
+```
+
+Answer:
+```
+Get-Content
+```
+
+## 26. Windows_PowerShell_Logic2 (5)
+
+Prompt:
+```
+What PowerShell command will allow for counting lines in a file, averaging numbers, and summing numbers?
+```
+
+Answer:
+```
+Measure-Object
+```
+
+## 27. Windows_PowerShell_Regex1 (5)
+
+Prompt:
+```
+What PowerShell command searches for text patterns in a string?
+```
+
+Answer:
+```
+Select-String
+```
+
+## 28. Windows_PowerShell_Basics9 (5)
+
+Prompt:
+```
+Users' files are stored in their corresponding home directory. What is the literal path to all home directories on a Windows 10 system?
+```
+
+Answer:
+```
+C:\Users
+```
+
+## 29. Windows_PowerShell_Basics7 (10)
+
+Prompt:
+```
+How many properties are available for the get-process cmdlet?
+
+Note: Property values only
+```
+
+```powershell
+Get-Process | Get-Member | Where-Object {$_.MemberType -eq "Property"} | Measure-Object
+```
+
+Answer:
+```
+52
+```
+
+## 30. Windows_PowerShell_Alias3 (10)
+
+Prompt:
+```
+How many aliases does PowerShell have for listing the contents of a directory?
+```
+
+Answer:
+```
+3
+```
+
+## 31. Windows_PowerShell_Help4 (10)
+
+Prompt:
+```
+When requesting the help file for the get-process cmdlet, what full command is the 9th example given?
+```
+
+Answer:
+```
+Get-Process powershell
+```
+
+## 32. Windows_PowerShell_CimClasses2 (10)
+
+Prompt:
+```
+To complete this challenge, find the description of the Lego Land service.
+```
+
+```powershell
+Get-WmiObject win32_service | Where-Object {$_.Name -eq "LegoLand"} | select -Property *
+```
+
+Answer:
+```
+i_love_legos
+```
+
+## 33. Windows_PowerShell_Logic3 (10)
+
+Prompt:
+```
+In the CTF folder on the CTF User's Desktop, count the number of words in words2.txt.
+```
+
+```powershell
+Get-Content .\CTF\words2.txt | Measure-Object -word
+```
+
+Answer:
+```
+5254
 ```
