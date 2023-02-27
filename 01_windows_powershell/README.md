@@ -454,3 +454,201 @@ Answer:
 ```
 5254
 ```
+
+## 34. Windows_PowerShell_Logic4 (10)
+
+Prompt:
+```
+Count the number of files in the Videos folder in the CTF user's home directory.
+```
+
+```powershell
+Get-ChildItem .\Videos\ | Measure-Object
+```
+
+Answer:
+```
+925
+```
+
+## 35. Windows_PowerShell_Logic5 (10)
+
+Prompt:
+```
+Find the only line that makes the two files in the CTF user's Downloads folder different.
+
+Hint The flag is the string (not line number).
+```
+
+```powershell
+diff (Get-Content .\new.txt) (Get-Content .\old.txt)
+```
+
+Answer:
+```
+popeye
+```
+
+## 36. Windows_PowerShell_Logic6 (10)
+
+Prompt:
+```
+The password is the 21st line from the top, in ASCII alphabetically-sorted, descending order of the words.txt file.
+
+Note: File location is CTF user’s Desktop in CTF folder.
+```
+
+```powershell
+Get-Content .\words.txt | Sort-Object -Descending | Select-Object -First 21
+```
+
+Answer:
+```
+ZzZp
+```
+
+## 37. Windows_PowerShell_Logic7 (10)
+
+Prompt:
+```
+Count the number of unique words in words.txt, found on the CTF user's desktop, in the CTF folder.
+```
+
+```powershell
+Get-Content .\words.txt | Sort-Object -Unique | Measure-Object -word
+```
+
+Answer:
+```
+456976
+```
+
+## 38. Windows_PowerShell_Basics8 (10)
+
+Prompt:
+```
+How many methods are available for the get-process cmdlet?
+
+Machine: Admin_Station
+```
+
+```powershell
+Get-Process | Get-Member | Where-Object {$_.MemberType -eq "Method"} | Measure-Object
+```
+
+Answer:
+```
+19
+```
+
+## 39. Windows_PowerShell_Logic9 (10)
+
+Prompt:
+```
+Count the number of folders in the Music folder in the CTF user’s profile.
+```
+
+```powershell
+Get-ChildItem -Directory | Measure-Object
+```
+
+Answer:
+```
+411
+```
+
+## 40. Windows_PowerShell_Regex2 (10)
+
+Prompt:
+```
+Count the number of times, case-insensitive, gaab is listed in words.txt in the CTF folder on the CTF user's desktop.
+```
+
+```powershell
+Get-Content .\words.txt | Select-String "gaab" | Measure-Object
+```
+
+Answer:
+```
+1
+```
+
+## 41. Windows_PowerShell_Regex3 (10)
+
+Prompt:
+```
+Count the number of words, case-insensitive, with either a or z in a word, in the words.txt file on the CTF user's desktop.
+
+Hint: There are multiple "words" on each line.
+```
+
+```powershell
+Get-Content .\words.txt | Select-String "[aAzZ]" | Measure-Object
+```
+
+Answer:
+```
+160352
+```
+
+## 42. Windows_PowerShell_Regex4 (10)
+
+Prompt:
+```
+Count the number of times az appears in the words.txt file on the CTF user's desktop.
+```
+
+```powershell
+Get-Content .\words.txt | Select-String "az" | Measure-Object
+```
+
+Answer:
+```
+2754
+```
+
+## 43. Windows_PowerShell_Logic8 (15)
+
+Prompt:
+```
+Use a PowerShell loop to unzip the Omega file 1,000 times and read what is inside.
+
+Note: Make sure you back up the .zip file to a different directory before attempting this challenge.
+```
+
+```powershell
+for ($i = 1000; $i -gt 0; $i--) {
+$fname = 'Omega' + $i + '.zip'
+Expand-Archive $fname
+$dirname = 'Omega' + $i
+mv $dirname/* .
+rm -recurse $dirname
+rm $fname
+}
+```
+
+Answer:
+```
+
+```
+
+## 44. Windows_PowerShell_Regex5 (15)
+
+Prompt:
+```
+On the CTF user's desktop, count the number of words in words.txt that meet the following criteria:
+
+    a appears at least twice consecutively
+    and is followed immediately by any of the letters a through g
+
+Example: aac...aaa...
+```
+
+```powershell
+Get-Content .\words.txt | Select-String "aa[a-g]" | Measure-Object
+```
+
+Answer:
+```
+357
+```
