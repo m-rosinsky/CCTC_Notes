@@ -1,4 +1,4 @@
-# Powershell Notes
+# PowerShell Notes
 
 Link: https://os.cybbh.io/public/os/latest/index.html
 
@@ -9,3 +9,9 @@ Username:           `MIRO-006-B`
 Admin Station IP:   `10.50.33.169`
 
 Stack Number:       `9`
+
+## Write and Read Files
+```powershell
+Set-Content [filename] [content]
+Get-Content [filename]
+```
