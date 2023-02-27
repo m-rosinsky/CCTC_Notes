@@ -1,3 +1,3 @@
 # Powershell Notes
 
-These are notes for the powershell section of the CCTC class.
+Link: https://os.cybbh.io/public/os/latest/index.html
