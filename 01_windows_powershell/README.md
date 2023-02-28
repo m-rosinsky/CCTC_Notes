@@ -629,7 +629,7 @@ rm $fname
 
 Answer:
 ```
-
+kung-fu
 ```
 
 ## 44. Windows_PowerShell_Regex5 (15)
