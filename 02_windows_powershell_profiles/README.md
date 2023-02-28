@@ -99,6 +99,11 @@ Malware is running in a PowerShell profile on the File-Server. Based on PowerShe
 The flag is the string after the #, without the preceding space.
 ```
 
+Steps:
+```powershell
+Get-Content $PROFILE.AllUsersAllHosts
+```
+
 Answer:
 ```
 I am definitely not the malware
