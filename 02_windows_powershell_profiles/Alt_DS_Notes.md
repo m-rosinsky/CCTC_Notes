@@ -39,7 +39,7 @@ social security numbers
 ```powershell
 PS C:\> echo "normal stuff" > rem.txt
 
-PS C:\?Get-Content rem.txt
+PS C:\> Get-Content rem.txt
 normal stuff
 
 PS C:\> Set-Content .\rem.txt -Value "secret stuff" -Stream secret.info
