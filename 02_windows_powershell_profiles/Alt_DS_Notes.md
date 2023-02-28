@@ -78,3 +78,29 @@ C:\rem.txt secret.info
 PS C:\> Get-Content .\rem.txt -Stream secret.info
 secret stuff
 ```
+
+## Hash of Files with ADS
+
+#### Does the Hash change?
+```powershell
+C:\Program Files>cd C:\windows\system32
+
+C:\windows\system32>certutil -hashfile test.txt MD5
+MD5 hash of test.txt:
+cb73eeca4f440ee9c6e16ad3cfddb10a
+CertUtil: -hashfile command completed successfully.
+
+C:\windows\system32>notepad test.txt:secret.vbs
+_enter some extra code or remove some code_
+
+C:\windows\system32>more < test.txt:secret.vbs
+Dim oShell
+Set oShell = Wscript.CreateObject ("Wscript.Shell")
+oShell.run "cmd /k CD C:\Program Files & ping 8.8.8.8" ,1 , true
+words and such
+
+C:\windows\system32>certutil -hashfile test.txt MD5
+MD5 hash of test.txt:
+cb73eeca4f440ee9c6e16ad3cfddb10a
+CertUtil: -hashfile command completed successfully.
+```
