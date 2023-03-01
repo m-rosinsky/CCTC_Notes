@@ -1,6 +1,6 @@
 # 04_Linux_Basics
 
-Start key: `start`
+Start key: `start5309`
 
 # Notes
 
@@ -60,4 +60,84 @@ garviel@terra:~$ arp -a
 ? (10.9.0.2) at fa:16:3e:6f:d9:07 [ether] on ens3  
 ? (10.9.0.200) at fa:16:3e:6d:1a:b4 [ether] on ens3       
 _gateway (10.9.0.254) at fa:16:3e:64:5d:53 [ether] on ens3
+```
+
+#### Variables and Command Substitution
+
+```bash
+$ a=100
+$ echo $a
+100
+
+$ unset $a
+```
+
+## Scripting
+
+#### For Loops
+
+```bash
+garviel@terra:~$ for i in {1..5}
+> do
+> echo "Welcome $i times"
+> done
+Welcome 1 times  
+Welcome 2 times  
+Welcome 3 times  
+Welcome 4 times  
+Welcome 5 times
+```
+
+```bash
+garviel@terra:~$ for i in $dirs
+> do
+> echo $i
+> done
+/etc/NetworkManager
+/etc/X11
+/etc/acpi
+/etc/adduser.conf
+/etc/alternatives
+/etc/apache2
+/etc/apm
+```
+
+```bash
+garviel@terra:~$ for i in $dirs
+> do
+> if [ -d $i ] ;
+> then
+> echo "$i is a dir"
+> else
+> echo "$i is a file"
+> fi
+> done
+/etc/NetworkManager is a dir
+/etc/X11 is a dir
+/etc/acpi is a dir
+/etc/adduser.conf is a file
+/etc/alternatives is a dir
+/etc/apache2 is a dir
+/etc/apm is a dir
+```
+
+## Root the box
+
+```bash
+find . -exec /bin/sh \; -quit
+```
+
+Find SUID:
+```bash
+find / -perm /4000 2>/dev/null -exec ls -la {} \;
+```
+
+## String Manipulation
+
+#### awk
+
+```bash
+# -F Delim = " "
+# print 3rd 4th and 9th field and send to CSV
+ls -l /etc | awk -F " " '{print$3","$4","$9}' > files.csv
 ```
