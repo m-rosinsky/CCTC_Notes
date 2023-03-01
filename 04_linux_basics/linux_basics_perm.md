@@ -55,6 +55,31 @@ Answer:
 5
 ```
 
+# 4. (10)
+Prompt:
+```
+The user tyborc is unable to access the directory:
+
+/media/Bibliotheca/Bibliotheca_unus
+
+Why? Identify the permission missing in standard verb form.
+```
+
+Steps:
+```bash
+garviel@terra:~$ ls -l /media/Bibliotheca
+total 16
+drwxr-xr-x 7 mephiston chapter 4096 Feb 28  2022 Bibliotheca_duo     
+dr-xr-xr-x 2 mephiston chapter 4096 Feb 28  2022 Bibliotheca_quattuor
+dr-xr-xr-x 2 mephiston chapter 4096 Feb 28  2022 Bibliotheca_tribus  
+dr-xr-xr-- 2 mephiston chapter 4096 Feb 28  2022 Bibliotheca_unus
+```
+
+Answer:
+```
+execute
+```
+
 # 5. (10)
 Prompt:
 ```
@@ -77,6 +102,26 @@ ls -l /media/Bibliotheca/*
 Answer:
 ```
 Codex_Astartes
+```
+
+# 6. (10)
+Prompt:
+```
+You only have a single submission attempt for this challenge.
+
+Locate the file in /media/Bibliotheca that Inquisitor Quixos has sole modification rights on.
+
+The flag is the absolute path for the file.
+```
+
+Steps:
+```bash
+
+```
+
+Answer:
+```
+/media/Bibliotheca/Bibliotheca_duo/Codex_Hereticus
 ```
 
 # 7. (10)
@@ -106,11 +151,66 @@ The flag is the code name provided after a successful access attempt.
 
 Steps:
 ```bash
-ls -l /media/Bibliotheca/*
--rwxrwx--- 1 gaunt     guardsmen  865 Feb 28  2022  Tactica_Imperium
+sudo -H -u gaunt /media/Bibliotheca/Bibliotheca_quattuor/Tactica_Imperium
+
+Tactica_Imperium
+
+Enter_Access_Code
+Only the owner may access this file:
+Speak thy name: gaunt
+Processing...Access Granted
+Codename: GHOSTS
 ```
 
 Answer:
 ```
+GHOSTS
+```
 
+# 9. (10)
+Prompt:
+```
+Read the concealed file within /media/Bibliotheca
+```
+
+Steps:
+```bash
+garviel@terra:/media/Bibliotheca$ ls -RA | grep "^\." | grep -v "warp"
+.:
+./Bibliotheca_duo:
+.Secrets_of_the_Immaterium
+.secrets
+./Bibliotheca_quattuor:
+.Secrets_of_the_Immeterium
+./Bibliotheca_tribus:
+./Bibliotheca_unus:
+garviel@terra:/media/Bibliotheca$ cat Bibliotheca_duo/.Secrets_of_the_Immaterium
+Expand your mind
+```
+
+Answer:
+```
+Expand your mind
+```
+
+# 10. (10)
+Prompt:
+```
+Find the warp and read its secrets for the flag.
+```
+
+Steps:
+```bash
+garviel@terra:/media/Bibliotheca$ ls -RAp | grep -v /
+
+garviel@terra:/media/Bibliotheca$ find . -name .secrets
+./Bibliotheca_duo/.warp2/.warp5/warp5/.warp3/warp2/.secrets
+garviel@terra:/media/Bibliotheca$ cat ./Bibliotheca_duo/.warp2/.warp5/warp5/.warp3/warp2/.secrets
+Ph'nglui mglw'nafh Cthulhu
+garviel@terra:/media/Bibliotheca$
+```
+
+Answer:
+```
+Ph'nglui mglw'nafh Cthulhu
 ```
