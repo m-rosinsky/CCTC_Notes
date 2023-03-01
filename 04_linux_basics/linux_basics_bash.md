@@ -63,3 +63,26 @@ Answer:
 ```
 Vrc0vw7ZUaLBpQp
 ```
+
+# 2. (10)
+Prompt:
+```
+FILE: /home/garviel/Inquisition_Targets
+
+Identify heresy by comparing the Inquisition_Targets file to members of the Guardsmen group.
+
+HINT: Reformat and clean up the data before it is compared. awk and sort are your best friends!
+
+The flag is the number of heretics on the system.
+```
+
+Steps:
+```bash
+garviel@terra:~$ while read p; do cat /etc/group | grep "guardsmen" | grep $p; done < Inquisition_Tar
+gets
+```
+
+Answer:
+```
+8
+```

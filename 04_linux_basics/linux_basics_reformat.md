@@ -50,3 +50,45 @@ Answer:
 ```
 6cebf155e9c8f49d76ae1268214ff0b5
 ```
+
+# 4. (10)
+
+Prompt:
+```
+This challenge is worth 0 POINTS, and should only be attempted after all other challenges that are open to you, are completed!
+
+File: /home/garviel/NMAP_all_hosts.txt
+
+Format the file into the output displayed below using native Linux binaries like awk.
+
+
+Service: ident Count: 1
+==============================
+192.168.33.236
+
+Service: IIS Count: 3
+==============================
+192.168.33.205
+192.168.33.227
+192.168.33.229
+
+--TRIMMED--
+
+Present the script used to the instructor for credit when complete. Be prepared to explain the code.
+
+HINT: awk is a powerful text manipulation scripting language. It is a bit challenging to learn. Use the tutorials below to get started.
+
+https://www.grymoire.com/Unix/Awk.html
+
+https://www.gnu.org/software/gawk/manual/gawk.html
+```
+
+Steps:
+```bash
+
+```
+
+Answer:
+```
+
+```

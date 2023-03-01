@@ -82,3 +82,39 @@ Answer:
 ```
 4877
 ```
+
+# 5. (15)
+Prompt:
+```
+File: home/garviel/numbers
+
+Use regular expressions to find valid Locally Administered or Universally Administered Unicast MAC addresses.
+
+Give the count of Locally and Universally Administered MAC addresses as the answer.
+
+HINT: What characters specifically define a Locally or Universally Administered Unicast MAC Address?
+```
+
+Steps:
+```bash
+# There are 4 ranges of Locally Administered Address Ranges that can be used on a local network:
+
+    # x2-xx-xx-xx-xx-xx
+    # x6-xx-xx-xx-xx-xx
+    # xA-xx-xx-xx-xx-xx
+    # xE-xx-xx-xx-xx-xx
+
+    # x0
+    # x4
+    # x8
+    # xC
+
+garviel@terra:~$ grep -E '^(([A-F]|[0-9])(0|2|4|6|8|A|C|E))-((([A-F]|[0-9]){2})-){4}(([A-F]|[0-9]){2})$' numbers | wc -l
+178
+
+```
+
+Answer:
+```
+178
+```
