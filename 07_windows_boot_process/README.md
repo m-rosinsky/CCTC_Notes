@@ -1,6 +1,6 @@
 # Windows Boot Process
 
-Start Key: `start`
+Start Key: `start8633`
 
 ## BIOS and UEFI
 
@@ -82,6 +82,41 @@ csrss.exe                     7756                            4      7,980 K
 - `System` has more permissions than the admin account.
 - Represents the windows OS.
 - Can be tricked into executing malicious commands via `services`.
+
+## BCDEdit
+
+| ![alt text](https://git.cybbh.space/os/public/raw/master/images/dual_boot.png "BCDEdit") |
+|:--:|
+
+Import / Export
+```cmd
+PS C:\Users\andy.dwyer> bcdedit /export C:\Lion_BCD
+The operation completed successfully.
+
+PS C:\> bcdedit /import C:\Lion_BCD
+The operation completed successfully.
+```
+
+Set
+```cmd
+andy.dwyer@ADMIN-STATION C:\>bcdedit /set {current} description "Windows 7 - Lion Den"
+The operation completed successfully.
+```
+
+Delete
+```cmd
+andy.dwyer@ADMIN-STATION C:\>bcdedit /delete {ntldr} /f
+The operation completed successfully.
+```
+
+Safeboot
+```cmd
+andy.dwyer@ADMIN-STATION C:\>bcdedit /set {default} safeboot minimal
+The operation completed successfully.
+
+andy.dwyer@ADMIN-STATION C:\>bcdedit /deletevalue {default} safeboot
+The operation completed successfully.
+```
 
 ## Windows Process Tree Basics
 
