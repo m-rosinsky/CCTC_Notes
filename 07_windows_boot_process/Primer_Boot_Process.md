@@ -273,5 +273,125 @@ Research: https://www.picussecurity.com/resource/blog/picus-10-critical-mitre-at
 
 Answer:
 ```
-hibernate
+HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices
+```
+
+# 22. (1)
+Prompt:
+```
+When a user logons to a Windows host, authentication will either grant the user access to the local computer only (Local Logon) or the user will also be granted access to a Windows domain (Domain Logon). Which logon will the user be authenticated via the Security Accounts Manager (SAM) database?
+
+Research: https://learn.microsoft.com/en-us/windows-server/security/windows-authentication/windows-logon-scenarios
+```
+
+Answer:
+```
+local
+```
+
+# 23. (1)
+Prompt:
+```
+When a user logons to a Windows host, authentication will either grant the user access to the local computer only (Local Logon) or the user will also be granted access to a Windows domain (Domain Logon). Which logon will the user be authenticated via the Security Accounts Manager (SAM) database?
+
+Research: https://learn.microsoft.com/en-us/windows-server/security/windows-authentication/windows-logon-scenarios
+```
+
+Answer:
+```
+local
+```
+
+# 23. (1)
+Prompt:
+```
+What is the parent process of explorer.exe?
+
+Research: https://en.wikipedia.org/wiki/Windows_NT_booting_process#Shell
+```
+
+Answer:
+```
+userinit
+```
+
+# 24. (1)
+Prompt:
+```
+What is responsible for handling Windows SAS (secure attention sequence), user profile loading, assignment of security to user shell, and Windows station and desktop protection?
+
+Research: https://learn.microsoft.com/en-us/windows/win32/secauthn/winlogon
+```
+
+Answer:
+```
+winlogon
+```
+
+# 25. (1)
+Prompt:
+```
+What critical Windows process is initialized by wininit.exe, is responsible for creating the user's security access token and verifying user logon credentials?
+
+Research: https://en.wikipedia.org/wiki/Local_Security_Authority_Subsystem_Service
+```
+
+Answer:
+```
+lsass
+```
+
+# 26. (1)
+Prompt:
+```
+What Microsoft recovery option overwrites the registry key HKLM\System\Select after every successful logon?
+
+Research: https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/start-vm-last-known-good
+```
+
+Answer:
+```
+Last Known Good
+```
+
+# 27. (1)
+Prompt:
+```
+What authentication protocol is the default for logging onto an Active Directory domain and features SSO (Single-Sign On), mutual authentication and primarily uses symmetric cryptography?
+
+Research: https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview
+```
+
+Answer:
+```
+Kerberos
+```
+
+# 28. (1)
+Prompt:
+```
+In Kerberos the Active Directory controller serves as which major Kerberos component consisting of the Authentication Service (AS) and the Ticket Granting Service (TGS)
+
+Research: https://learn.microsoft.com/en-us/windows/win32/secauthn/key-distribution-center
+```
+
+Answer:
+```
+Key Distribution Center
+```
+
+# 29. (1)
+Prompt:
+```
+When would the following Windows registry keys, actions occur?
+HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Userinit
+HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell
+HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify
+
+Research: https://www.picussecurity.com/resource/blog/picus-10-critical-mitre-attck-techniques-t1060-registry-run-keys-startup-folder
+```
+
+Answer:
+```
+logon
 ```
