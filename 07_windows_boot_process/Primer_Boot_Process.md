@@ -25,3 +25,7 @@ Answer:
 ```
 sector
 ```
+
+```python
+print("Hello, World!")
+```
