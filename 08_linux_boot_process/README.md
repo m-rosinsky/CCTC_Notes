@@ -1,8 +1,8 @@
 # Linux Boot Process
 
-Start Key: ``
+Start Key: `start3675`
 
-## The Linux Boot Proccess Overview
+## The Linux Boot Process Overview
 
 | ![alt text](https://git.cybbh.space/os/public/-/raw/master/os/modules/007_linux_boot_process/pages/linboot1.png "Linux Boot Process") |
 |:--:|
