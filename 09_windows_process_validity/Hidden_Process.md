@@ -116,22 +116,69 @@ Answer:
 StrongBad
 ```
 
+Answer:
+```
+GwlkK3sa
+```
+
 # 7. (10)
 Prompt:
 ```
-There is malware named TotallyLegit. Find its binary location and there will be a file in that directory. Read the file.
+A nonstandard port has been opened by possible malware on the system. Identify the port.
 
-HINT: Use Sysinternals tools.
+    Creds:
+    Machine: Workstation1 (RDP from Admin-Station)
+        login: student
+        password: password
 ```
 
 Steps:
-```
-Autoruns -> TotallyLegit
-
-C:\Users\Public\Downloads
+```powershell
+TCPView
 ```
 
 Answer:
 ```
-GwlkK3sa
+6666
+```
+
+# 8. (10)
+Prompt:
+```
+Determine what mechanism opened the port from hidden_processes_7. The flag is the name of the file.
+
+Hint: The file is not legit.
+
+    Creds:
+    Machine: Workstation1 (RDP from Admin-Station)
+        login: student
+        password: password
+```
+
+Steps:
+```powershell
+C:\windows\system32>schtasks /query /v /fo list | findstr powershell                                                                             Task To Run:                          powershell.exe -noexit -windowstyle hidden -File C:\windows\system32\legit_script.ps1
+```
+
+Answer:
+```
+legit_script.ps1
+```
+
+# 9. (10)
+Prompt:
+```
+Identify the flag from the file in hidden_processes_8.
+```
+
+Steps:
+```
+netstat -ano | findstr 6666 | out-null
+if ($lastexitcode -eq 1) {$Listener = [System.Net.Sockets.TcpListener]6666;$Listener.Start();}
+# N0t_L3g1T_Ammiright
+```
+
+Answer:
+```
+N0t_L3g1T_Ammiright
 ```
