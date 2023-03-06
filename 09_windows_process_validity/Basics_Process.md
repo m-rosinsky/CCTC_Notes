@@ -36,7 +36,7 @@ TCPView
 # 4. (5)
 Prompt:
 ```
-What Sysinternals tool can be used to investigate network connection attempts?
+What Sysinternals tool can be used to investigate permissions
 ```
 
 Answer:
