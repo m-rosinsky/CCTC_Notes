@@ -93,3 +93,23 @@ Answer:
 ```
 Disable
 ```
+
+# 6. (10)
+Prompt:
+```
+While examining the Windows Defender Firewall, what is the LogAllowedConnections setting set to, for the Public profile?
+```
+
+Steps:
+```powershell
+netsh advfirewall show allprofiles
+
+Public Profile Settings:
+---------------------------------------------------------------------
+LogAllowedConnections Disable                                                                           
+```
+
+Answer:
+```
+Disable
+```
