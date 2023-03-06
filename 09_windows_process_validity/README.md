@@ -1,6 +1,8 @@
 # Windows Process Validity
 
 Start Key: `start`
+Start Key: `start0864`
+Start Key: `start4597`
 
 # 1. What is Process Validity and Why it Matters
 
@@ -50,13 +52,17 @@ Get-Process | Sort -Property Id | more
 Get-Process | Select Name, ID, Description | Sort -Property Id | more
 
 # View only certain processes
-Get-Process | SMSS,CSRSS,LSASS | Sort -Property Id
+Get-Process -Name SMSS,CSRSS,LSASS | Sort Id
+Get-Process | where {$_.name -like "*ss"}
 
 # View modules/DLLs used by defined processes and their file locations
 Get-Process chrome | foreach {$a} {$_.modules} | more
 
 # View only mods/DLLs used by Chrome with "chrome" in their name and file locations.
 Get-Process chrome | foreach {$a} {$_.modules} | Where-Object ModuleName -like '*chrome*' | more
+
+Get-Process | select name,id,path | where path -notmatch "system32"
+Get-Process | select name,id,path | where {$_.path -notmatch "system32" -and $_.Path -notmatch "Program Files")}
 ```
 
 Powershell Ciminstance
