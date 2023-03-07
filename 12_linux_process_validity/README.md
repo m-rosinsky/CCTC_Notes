@@ -1,6 +1,6 @@
 # Linux Process Validity
 
-Start Key: `start`
+Start Key: `start1640`
 
 # 1. Process Listing
 
@@ -255,4 +255,22 @@ Examples:
 ** `12 4 * * *`    /usr/bin/backup
 ```
 
+```bash
+sudo lsof | head
+```
+
 # 7. Processes and Proc Dir
+
+- The `/proc` directory contains hierarchy of special files which allow users to see processes
+- Every process access files called fds.
+
+## 7.1 File Descriptors
+
+- Unique handles for a file, such as open files, pipes, sockets, etc.
+
+### 7.1.1 Viewing File Descriptors
+
+```bash
+# See all open files for a specified process
+sudo lsof -c sshd
+```
