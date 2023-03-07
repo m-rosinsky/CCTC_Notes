@@ -141,3 +141,118 @@ Defines who can interact with a running process, and who can send signals to it.
 garviel@terra:~$ ls -l /usr/bin/passwd
 -rwsr-xr-x 1 root root 59640 Nov 29 12:25 /usr/bin/passwd
 ```
+
+# 5. System Calls
+
+| ![alt text](https://git.cybbh.space/os/public/-/raw/master/os/modules/010_linux_process_validity/pages/linproc1.png "Process Spawning") |
+|:--:|
+
+## 5.2 Linux Signals
+
+```bash
+garviel@terra:~$ kill -l
+ 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP    
+ 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1    
+11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM    
+16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP    
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ    
+26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR     
+31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+63) SIGRTMAX-1  64) SIGRTMAX
+
+# Send SIGINT to process
+kill -2 <PID>
+```
+
+# 6. Foreground and Background Processes
+
+## 6.1 Orphan Processes
+
+- Orphan process has a parent who is terminated and is adopted by `sbin/init` (PPID = 1)
+
+```bash
+# Close a shell/terminal and force all children to be adopted
+disown -a && exit
+```
+
+## 6.2 Zombie (Defunct) Processes
+
+Processes that have completed execution but have not been reaped by parent processes
+
+## 6.3 Daemons
+
+- Processes that run in the background that are intentionally orphaned.
+- Parent process is 1, so shutdown would be required to kill process.
+
+```bash
+# See process with ppid of 1 (/sbin/init)
+ps --ppid 1 -lf
+```
+
+### 6.3.1 Interacting with Linux Services
+
+The basic object that `systemd` manages is a `unit`.
+
+```bash
+# List services
+systemctl --type=service
+
+systemctl list-unit
+
+# Get status of service
+systemctl status <pid or name>
+
+# Interact
+systemctl <start / stop / restart> <pid or name>
+```
+
+## 6.4 Job Control
+
+Job status are foreground, background, and stop.
+
+```bash
+# Run command in background with &
+ping 8.8.8.8 &
+
+# Stop the job with ^Z
+```
+
+## 6.5 Cron Jobs
+
+Jobs that run repeatedly on a fixed schedule. Usually used for auto system maintenance
+
+Cron daemon checks `/var/spool/cron`, `/etc/cron.d`, and `/etc/crontab` once a minute.
+
+Two types of cron jobs:
+1. System cron jobs
+    - Run as root and rigidly scheduled
+    - controlled by `/etc/crontab`
+2. User cron Jobs
+    - Stored in `/var/spool/cron/crontabs`
+
+```bash
+# Load crontab data from specified file
+crontab -u [user] file
+
+# Display user's crontab contents
+crontab -l -u [user]
+
+# Remove user crontab contents
+crontab -r -u [user]
+
+# Edit user crontab contents
+crontab -e -u [user]
+```
+
+Examples:
+```
+* Run backup everyday at 0412
+** `12 4 * * *`    /usr/bin/backup
+```
+
+# 7. Processes and Proc Dir
