@@ -209,3 +209,23 @@ Answer:
 ```
 /bin/netcat -lp 9999
 ```
+
+# 10. (15)
+Prompt:
+```
+Locate the strange open port on the SysV system.
+
+Identify the command line executable and its arguments.
+
+Flag format: /executable/path -arguments
+```
+
+Steps:
+```bash
+cat /etc/inittab
+```
+
+Answer:
+```
+/etc/inittab,91:2345:respawn:/bin/netcat -lp 9999
+```
