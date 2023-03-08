@@ -1,8 +1,10 @@
 # Windows Auditing and Logging
 
-Start Key: `start`
+Start Key: `start3567`
 
 # 1. Windows Artifacts
+
+andy.dwyer sid: ` S-1-5-21-1204278314-2763755555-735148208-1005`
 
 # 1.1 What is an Artifact?
 
@@ -48,3 +50,63 @@ PS C:\> Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explor
 ```powershell
 PS C:\> Get-ItemProperty "Registry::Hkey_Users\*\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count"
 ```
+
+# 3. Windows Background Activity Monitor (BAM)
+
+Show in Reg Edit:
+```
+# On 1809 and Newer
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings
+```
+
+```
+# On 1803 and below
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam\UserSettings
+```
+
+# 4. Recycle Bin
+
+- Content:
+    - SID: The user that deleted it
+    - Timestamp: When it was deleted
+    - `$RXXXXXX`: Content of deleted files
+    - `$IXXXXXX`: Original path and name
+
+```powershell
+Get-Childitem 'C:\$RECYCLE.BIN' -Recurse -Verbose -Force | select FullName
+```
+
+# 5. Prefetch
+
+- Prefetch entries record the location of the associated executable and files
+referenced by that executable.
+- Look for any files executed or referenced from a temp directory as this is typically an outlier.
+
+```powershell
+Get-Childitem -Path 'C:\Windows\Prefetch' -ErrorAction Continue | select -First 8
+```
+
+# 6. Jump Lists
+
+- Task bar allows user to jump to items quickly
+- Data stored:
+    - First time execution of an application
+    - Creation time: First time item added to the AppID file
+    - Last time of execution of application w/ file open
+    - Modification time
+
+```powershell
+Get-Childitem -Recurse C:\Users\*\AppData\Roaming\Microsoft\Windows\Recent -ErrorAction Continue | select FullName, LastAccessTime
+```
+
+# 7. Recent Files
+
+```powershell
+# Get .txt files
+Get-Item 'Registry::\HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt'
+
+# Decode
+[System.Text.Encoding]::Unicode.GetString((gp "REGISTRY::HKEY_USERS\*\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt")."0")  
+```
+
+# 8. Browser Artifacts
