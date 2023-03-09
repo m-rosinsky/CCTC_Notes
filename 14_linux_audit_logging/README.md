@@ -1,5 +1,7 @@
 # Linux Auditing and Logging
 
+Start Key: `start`
+
 # 1. What is Logging?
 
 - A record or performance, events, or day-to-day activities
