@@ -205,7 +205,7 @@ When contained in a Windows users access token, what privilege does SeBackupPriv
 
 Answer:
 ```
-
+backup
 ```
 
 # 8. (1)
