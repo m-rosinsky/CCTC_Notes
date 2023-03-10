@@ -28,3 +28,8 @@ Stack Number:
 
 | ![alt text](https://git.cybbh.space/os/public/-/raw/master/images/new_OS_Range_Diagram.svg "Range Map") |
 |:--:|
+
+Sysinternals:
+```
+net use * \\live.sysinternals.com\tools
+```
