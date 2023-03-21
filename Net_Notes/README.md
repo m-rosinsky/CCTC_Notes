@@ -29,6 +29,11 @@ http://networking-practice-ctfd.server.vta:8000/
 http://10.50.21.30:8000/
 ```
 
+Miro:
+```
+https://miro.com/app/board/o9J_klSqCSY=/?share_link_id=16133753693
+```
+
 Internet Host:
 ```
 Student #: 12
