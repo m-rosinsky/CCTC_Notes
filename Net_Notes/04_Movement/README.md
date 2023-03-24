@@ -33,7 +33,7 @@ From Intermediate:
 scp -3 student@10.10.0.40:flag.png student@192.168.1.10:
 ```
 
-## Tunnel
+## Local Tunnel
 Local Port Forward:
 ```
 # TO PRIV HOST
@@ -58,3 +58,5 @@ FIFO:
 student@blue-host-1-student-12:~$ mkfifo pipe
 student@blue-host-1-student-12:~$ nc -lvp 1111 < pipe | nc -lvp 4444 > pipe
 ```
+
+##
