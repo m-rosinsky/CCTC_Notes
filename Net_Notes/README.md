@@ -48,3 +48,7 @@ xfreerdp /v:10.50.26.174 /u:student /p:password /size:1900x1000 +clipboard
 Network Map:
 | ![alt text](https://git.cybbh.space/net/public/-/raw/master/modules/networking/slides/images/student_net_range_blue_only.png "Network Map") |
 |:--:|
+
+Red Network Map:
+| ![alt text](https://github.com/m-rosinsky/CCTC_Notes/blob/main/Net_Notes/red_net.png "Network Map") |
+|:--:|
