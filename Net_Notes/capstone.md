@@ -539,3 +539,148 @@ company_payroll_2019 -> Y29tcGFueV9wYXlyb2xsXzIwMTkK
 ## 14
 
 IP: 192.168.10.111
+
+NMAP:
+```
+Nmap scan report for 192.168.10.111
+Host is up (0.0014s latency).
+Not shown: 9989 closed ports
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+88/tcp   open  kerberos-sec
+123/tcp  open  ntp
+357/tcp  open  bhevent
+791/tcp  open  unknown
+859/tcp  open  unknown
+1321/tcp open  pip
+1999/tcp open  tcp-id-port
+2223/tcp open  rockwell-csp2
+2711/tcp open  sso-control
+```
+
+WGET:
+```
+hint-14a.png -> Webservice running on Expanded Extended Cisco Numbered ACL Range.
+                (2223)
+hint-14b.png -> Snort is running on this machine. Look through its file locations.
+```
+
+WGET 2223:
+```
+index questions
+```
+
+index-1.html:
+```
+In NAT, which Hook would I place a rule to change the source IP for all traffic thru this host?
+Specify your 1 word answer in ALL CAPS and converted to Base64.
+
+Answer:
+POSTROUTING -> UE9TVFJPVVRJTkcK
+```
+
+index-2.html:
+```
+Which Hook would I apply rules that are destined for the ‘localhost’?
+Specify your 1 word answer in ALL CAPS and converted to Base64.
+
+Answer:
+INPUT -> SU5QVVQK
+```
+
+index-3.html:
+```
+What recognition method do IDS/IPS primarily use to detect malicious traffic?
+Specify your 1 word answer in ALL CAPS and converted to Base64.
+
+Answer:
+SIGNATURE -> U0lHTkFUVVJFCg==
+```
+
+index-4.html:
+```
+In iptables, which Table would I use if I wanted to preform packet alterations?
+Specify your 1 word answer in ALL CAPS and converted to Base64.
+
+Answer:
+MANGLE -> TUFOR0xFCg==
+```
+
+index-5.html:
+```
+What is the default family for NFTables?
+Specify your 1 word answer in ALL CAPS and converted to Base64.
+
+Answer:
+IP -> SVAK
+```
+
+Flag-14f.txt:
+```
+To answer these s questions, you will need to examine the Snort services running on this system.
+
+
+-------------------------------------------------------------------------------
+
+Question 1:
+
+How many rule files are on the system?
+
+Provide the number converted to Base64 as your answer.
+
+Answer:
+24 -> MjQK
+
+-------------------------------------------------------------------------------
+
+Question 2:
+
+How many of the rules are being used to match for traffic?
+
+Provide the number converted to Base64 as your answer.
+
+Answer:
+7 -> Nwo=
+
+-------------------------------------------------------------------------------
+
+Question 3:
+
+Which rule will look for someone doing a null scan ?
+
+Provide only the filename as your answer (i.e. ‘file.rules’) and converted to Base64.
+
+Answer:
+alien-abductions.rules -> YWxpZW4tYWJkdWN0aW9ucy5ydWxlcwo=
+
+-------------------------------------------------------------------------------
+
+Question 4:
+
+What is the exact Alert Message that is being triggered on the system?
+
+Convert the exact message as you see it and convert it to Base64 for your answer.
+
+Answer:
+ps -elf -all | grep snort
+cat alert
+
+Who got that kinda monies to pay that! ->
+V2hvIGdvdCB0aGF0IGtpbmRhIG1vbmllcyB0byBwYXkgdGhhdCEK
+
+---------------------------------------------------------------
+
+Question 5:
+
+From what IP is the attack coming from?
+
+Provide your answer in the x.x.x.x format and converted to Base64.
+
+Answer:
+192.168.10.99 -> 
+MTkyLjE2OC4xMC45OQo=
+
+-------------------------------------------------------------------------------
+
+```
