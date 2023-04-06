@@ -1,17 +1,5 @@
 # Security Notes
 
-lin-ops Creds:
-```
-10.50.33.14
-student:password
-```
-
-win-ops Creds:
-```
-10.50.24.228
-student:password
-```
-
 Class info:
 ```
 http://10.50.31.182/classinfo.html
@@ -35,7 +23,21 @@ Student Guide:
 https://sec.cybbh.io/public/security/latest/index.html
 ```
 
-Jumpbox:
+## Boxes
+
+lin-ops:
+```
+10.50.33.14
+student:password
+```
+
+win-ops:
+```
+10.50.24.228
+student:password
+```
+
+jump box:
 ```
 IP:             10.50.36.67
 Username:       student
