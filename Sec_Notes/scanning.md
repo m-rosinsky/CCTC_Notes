@@ -147,3 +147,8 @@ PORT   STATE SERVICE
 |   /images/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
 |_  /sites/: Potentially interesting folder
 ```
+
+SMB:
+```
+smb-os-discovery.nse
+```

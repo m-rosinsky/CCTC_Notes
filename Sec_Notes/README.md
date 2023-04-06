@@ -43,3 +43,8 @@ IP:             10.50.36.67
 Username:       student
 Password:       YCZDgFjQgDyjo4R
 ```
+
+Uploads:
+```
+10.50.37.86/uploads
+```
