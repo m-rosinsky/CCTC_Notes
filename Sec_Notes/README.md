@@ -23,6 +23,11 @@ Student Guide:
 https://sec.cybbh.io/public/security/latest/index.html
 ```
 
+Uploads:
+```
+10.50.37.86/uploads
+```
+
 ## Boxes
 
 lin-ops:
@@ -42,9 +47,4 @@ jump box:
 IP:             10.50.36.67
 Username:       student
 Password:       YCZDgFjQgDyjo4R
-```
-
-Uploads:
-```
-10.50.37.86/uploads
 ```
