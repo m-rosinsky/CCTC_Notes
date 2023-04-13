@@ -48,3 +48,9 @@ IP:             10.50.36.67
 Username:       student
 Password:       YCZDgFjQgDyjo4R
 ```
+
+My Python Script:
+```python
+while True:
+    print("Hello, World!")
+```
