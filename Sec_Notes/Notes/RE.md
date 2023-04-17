@@ -47,3 +47,20 @@
 
 - Instruction Pointer (IP)
 - Holds address of next instruction to be executed
+
+## RE Workflow
+
+1. Static
+2. Behavioral
+3. Dynamic
+4. Disassembly
+5. Document Findings
+
+## Ghidra (Static Analysis)
+
+- New Project
+- Drag executable to project
+- Open and analyze
+
+String Search:
+1. Search > For Strings
