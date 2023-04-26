@@ -43,6 +43,10 @@ for i in {2..254} ; do (ping -c 1 192.168.28.$i | grep "bytes from" &) ; done
 ```
 
 ```
+for ip in $(seq 1 254); do (ping -c 1 192.168.28.$ip | grep "bytes from" &); done
+```
+
+```
 64 bytes from 192.168.28.2: icmp_seq=1 ttl=63 time=1.63 ms
 64 bytes from 192.168.28.3: icmp_seq=1 ttl=63 time=1.25 ms
 64 bytes from 192.168.28.97: icmp_seq=1 ttl=64 time=0.548 ms
@@ -70,7 +74,7 @@ Nmap scan report for 192.168.28.111
 Host is up (0.0033s latency).
 
 PORT   STATE SERVICE
-80/tcp open  http
+80/tcp open  httpEaglesIsARE78
 
 Nmap done: 12 IP addresses (12 hosts up) scanned in 0.07 seconds
 ```

