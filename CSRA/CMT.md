@@ -7,8 +7,8 @@ brett:Venezuela        (used on DMZ FTP server)
 nelmanso:password
 raljabar:123456
 teljalal:00000         (used on DMZ Web Server ssh login)
-malmowad:181991
-relsalih:Password123
+malmowad:181991        (used on Ground 57)
+relsalih:Password123   (used on Air 105)
 jjaheer:phillip22
 jackasis:SuperSecure1
 ```
