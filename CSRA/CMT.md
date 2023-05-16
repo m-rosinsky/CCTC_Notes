@@ -11,6 +11,10 @@ malmowad:181991        (used on Ground 57)
 relsalih:Password123   (used on Air 105)
 jjaheer:phillip22
 jackasis:SuperSecure1
+malassaf:karoljlopez
+Jalganem:beyota (172.18.5.207)
+Ralcham:220798 (172.18.4.125 - finance)
+malabbas:Badboy
 ```
 
 ## Edge Router
@@ -190,7 +194,7 @@ Ports:
 - 22 SSH
 
 Credentials:
-None Found
+- neltaha:Maddog (via SSH)
 
 ## Air Defense Controller (Air Enclave Internal)
 OS:
@@ -454,4 +458,48 @@ Ports:
 - 8080 HTTP Alt
 
 Credentials:
-- malassaf:
+- malassaf:karoljlopez
+
+## Government Finance 125
+OS:
+```
+
+```
+
+Hostname:
+```
+
+```
+
+IP:
+```
+172.18.4.125
+```
+
+Ports:
+- 8080 HTTP Alt
+
+Credentials:
+- malassaf:karoljlopez
+
+## Government Leadership 207
+OS:
+```
+
+```
+
+Hostname:
+```
+
+```
+
+IP:
+```
+172.18.5.207
+```
+
+Ports:
+- 22
+
+Credentials:
+- malassaf:karoljlopez
