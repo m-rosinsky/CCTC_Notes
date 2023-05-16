@@ -319,6 +319,7 @@ Ports:
 - 22 SSH
 
 Credentials:
+- nelmanso:password
 
 ## Government Interior 26
 OS:
@@ -340,6 +341,7 @@ Ports:
 - 22 SSH
 
 Credentials:
+- nelmanso:password
 
 ## Government Interior 102
 OS:
