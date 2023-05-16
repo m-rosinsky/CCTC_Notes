@@ -252,3 +252,27 @@ lo           	127.0.0.1/8                   	u/u  LAN_RTR_LO
              	172.0.0.3/32
              	::1/128
 ```
+
+## Government Web Server (Gov DMZ)
+OS:
+```
+Linux
+```
+
+Hostname:
+```
+donovia-gov-dmz-80-u14l
+```
+
+IP:
+```
+172.18.7.80 (Internal)
+```
+
+Ports:
+- 21 FTP
+- 22 SSH
+- 80 HTTP
+
+Credentials:
+- nelmanso:password (via SSH)
