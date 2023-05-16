@@ -276,3 +276,179 @@ Ports:
 
 Credentials:
 - nelmanso:password (via SSH)
+
+## Gov Interior 234
+OS:
+```
+
+```
+
+Hostname:
+```
+
+```
+
+IP:
+```
+172.18.2.234
+```
+
+Ports:
+- 80 HTTP
+
+Credentials:
+
+
+## Government Interior 199
+OS:
+```
+
+```
+
+Hostname:
+```
+
+```
+
+IP:
+```
+172.18.2.199
+```
+
+Ports:
+- 22 SSH
+
+Credentials:
+
+## Government Interior 26
+OS:
+```
+
+```
+
+Hostname:
+```
+
+```
+
+IP:
+```
+172.18.2.26
+```
+
+Ports:
+- 22 SSH
+
+Credentials:
+
+## Government Interior 102
+OS:
+```
+
+```
+
+Hostname:
+```
+
+```
+
+IP:
+```
+172.18.2.102
+```
+
+Ports:
+- 21 FTP
+- 22 SSH
+- 23 Telnet
+- 25 SMTP
+- 139 SMB
+- 445 SMB
+- 3389 RDP
+- 8080 HTTP Alt
+
+Credentials:
+
+## Government Transpo 10
+OS:
+```
+
+```
+
+Hostname:
+```
+
+```
+
+IP:
+```
+172.18.3.10
+```
+
+Ports:
+- 22 SSH
+
+Credentials:
+
+## Government Transpo 21
+OS:
+```
+
+```
+
+Hostname:
+```
+
+```
+
+IP:
+```
+172.18.3.21
+```
+
+Ports:
+- 22 SSH
+
+Credentials:
+
+## Government Transpo 66
+OS:
+```
+
+```
+
+Hostname:
+```
+
+```
+
+IP:
+```
+172.18.3.66
+```
+
+Ports:
+- 22 SSH
+
+Credentials:
+
+## Government Transpo 95
+OS:
+```
+
+```
+
+Hostname:
+```
+
+```
+
+IP:
+```
+172.18.3.95
+```
+
+Ports:
+- 8080 HTTP Alt
+
+Credentials:
