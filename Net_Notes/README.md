@@ -44,6 +44,9 @@ RDP:
 ```
 xfreerdp /v:10.50.26.174 /u:student /p:password /size:1900x1000 +clipboard
 ```
+```
+xfreerdp /v:10.50.39.4 /u:entity /p:D0n0viaRule$ /size:1900x1000 +clipboard
+```
 
 Network Map:
 | ![alt text](https://git.cybbh.space/net/public/-/raw/master/modules/networking/slides/images/student_net_range_blue_only.png "Network Map") |
